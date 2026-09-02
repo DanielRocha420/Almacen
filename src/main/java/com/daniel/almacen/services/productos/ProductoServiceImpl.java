@@ -53,7 +53,7 @@ public class ProductoServiceImpl implements ProductoService {
 
         Producto producto = obtenerProductoOExeption(id);
 
-        log.info("Actualizando producto con id: {}", id);
+        log.info("Actualizando producto con id: {}",  id);
 
         producto.actualizar(
                 request.nombre(),

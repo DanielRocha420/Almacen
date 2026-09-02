@@ -25,7 +25,7 @@ public record ProductoRequest(
                 description = "Categoria del producto",
                 example = "Electronicos"
         )
-        @NotNull(message = "La categoria es requerida")
+        @NotBlank(message = "La categoria es requerida")
         String categoria,
 
 
@@ -33,7 +33,7 @@ public record ProductoRequest(
                 description = "Precio del producto",
                 example = "197900.00"
         )
-        @NotNull(message = "El precio s requerido")
+        @NotBlank(message = "El precio s requerido")
         @Positive(message = "El precio debe ser positivo")
         BigDecimal precio,
 
@@ -42,7 +42,7 @@ public record ProductoRequest(
                 description = "Cantidad disponible del producto",
                 example = "300"
         )
-        @NotNull(message = "La cantidad es requerido")
+        @NotBlank(message = "La cantidad es requerido")
         @Positive(message = "La cantidad debe ser positivo")
         Integer cantidad
 ) {
