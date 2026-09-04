@@ -41,16 +41,20 @@ public class Producto {
 
         this.cantidad += cantidad;
     }
-
+//
     public void descontarCantidad(int cantidad) {
-        ValoresNumericosUtils.validarEnteroPositivo(cantidad, "La cantidad debe ser positiva");
+        ValoresNumericosUtils.validarEnteroPositivo(cantidad, "La cantidad a descontar debe ser positiva");
 
-        if (cantidad > this.cantidad)
-            throw new IllegalArgumentException("La cantidad debe ser menor o igual a la cantidad actual");
+        //Validación de Existencias
+        if (cantidad > this.cantidad) {
+
+            throw new IllegalArgumentException(
+                    "Stock insuficiente para el producto '" + this.nombre +
+                            "'. Stock disponible: " + this.cantidad + ", solicitado: " + cantidad
+            );
+        }
 
         this.cantidad -= cantidad;
-
-        this.cantidad += cantidad;
     }
 
     public void validarDatos(String nombre, Categoria categoria, BigDecimal precio, Integer cantidad) {

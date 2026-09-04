@@ -14,7 +14,7 @@ public record ProductoRequest(
 
         @Schema(
                 description = "Nombre del producto",
-                example = "Lapto gamer"
+                example = "Laptop gamer"
         )
         @NotBlank(message = "El nombre es requerido")
         @Size(min = 5, max = 30, message = "El nombre debe tener 5 y 30 caracteres")

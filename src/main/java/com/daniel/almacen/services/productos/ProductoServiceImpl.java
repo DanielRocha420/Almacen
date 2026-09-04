@@ -23,12 +23,20 @@ public class ProductoServiceImpl implements ProductoService {
     private final ProductoRepository productoRepository;
     private final ProductoMapper productoMapper;
 
+
+
     @Override
     @Transactional(readOnly = true)
+    //1. Filtrado Avanzado de Productos
     public List<ProductoResponse> listar(String nombre, String categoria, BigDecimal precioMin, BigDecimal precioMax) {
-        log.info("Listando todos los productos");
+        log.info("Listando productos con filtros");
 
-        return productoRepository.findAll().stream()
+        String nombreFiltro = (nombre == null || nombre.isBlank()) ? null : nombre.trim();
+        Categoria categoriaFiltro = (categoria == null || categoria.isBlank())
+                ? null
+                : Categoria.obtenerCategoriaPorDescrippcion(categoria);
+        return productoRepository.buscar(nombreFiltro, categoriaFiltro, precioMin, precioMax).stream()
+
                 .map(productoMapper::entidadAResponse).toList();
     }
 
@@ -85,6 +93,8 @@ public class ProductoServiceImpl implements ProductoService {
                 () -> new RecursoNoEncontradoException("Producto no encontrado con id:" + id));
 
     }
+
+
 
 
 }
