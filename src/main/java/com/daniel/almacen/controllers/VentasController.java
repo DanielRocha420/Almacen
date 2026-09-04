@@ -30,7 +30,7 @@ public class VentasController {
 
     @GetMapping
     @Operation(
-            summary = "Listar Ventas",
+            summary = "Historico - Ventas Registradas",
             tags = {"Ventas - Consultas"}
     )
 
@@ -44,7 +44,7 @@ public class VentasController {
 
     }
 
-    @GetMapping("/historico-canceladas")
+    @GetMapping("/historico - Ventas canceladas")
     public ResponseEntity<List<VentaResponse>> listarHistoricoCanceladas(
             @RequestParam(required = false, name = "id_sucursal") Long idSucursal
     ) {
